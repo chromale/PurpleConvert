@@ -1,0 +1,21 @@
+.Converter {
+  .Converter-wrap {
+    max-width: 500px;
+    margin: 100px auto;
+  }
+
+  .Converter-valueInput {
+    margin-bottom: 20px;
+  }
+}
+
+.PurpleConvertInput {
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 3px;
+  padding: 14px 20px;
+  color: rgba(0, 0, 0, 0.9);
+  box-shadow: 0 0 20px 0 rgba(51, 18, 77, 0.74);
+  outline: none;
+  border: 1px solid rgba(51, 18, 77, 1);
+}
