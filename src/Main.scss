@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Ubuntu:300,400,500&subset=latin-ext");
+@import url("https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.css"); // TODO: Local
+
 .App {
   font-family: "Ubuntu", sans-serif;
   color: #fff;
@@ -17,30 +19,4 @@
   bottom: 0;
   left: 0;
   right: 0;
-}
-
-.App-logo {
-  height: 40px;
-}
-
-.PurpleConvert-header {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid rgba(222, 222, 222, 0.35);
-  height: 100px;
-}
-
-.PurpleConvert-header-block {
-  flex: 1;
-  text-align: center;
-
-  &._logo img {
-    user-select: none;
-  }
-
-  &._title h1 {
-    font-weight: 300;
-  }
 }
