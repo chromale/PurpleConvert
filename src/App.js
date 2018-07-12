@@ -8,11 +8,11 @@ class App extends Component {
       <div className="App">
         <div className="PurpleConvert-mainView">
           <header className="PurpleConvert-header">
-            <div>
+            <div className="PurpleConvert-header-block _logo">
               <img src={logo} className="App-logo" alt="logo" />
             </div>
-            <div>
-              <h1 className="App-title">Welcome to React</h1>
+            <div className="PurpleConvert-header-block _title">
+              <h1>Currency Converter</h1>
             </div>
           </header>
           <p className="App-intro">
