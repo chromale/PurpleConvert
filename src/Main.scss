@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Ubuntu:300,400,500&subset=latin-ext");
-
 .App {
   font-family: "Ubuntu", sans-serif;
   color: #fff;
@@ -8,7 +7,11 @@
   letter-spacing: 0.1px;
   text-rendering: geometricPrecision;
   background: rgba(82, 36, 115, 0.95);
-  background: -moz-linear-gradient(-45deg, #522473 0%, #503099 100%);
+  background: -moz-linear-gradient(
+    -45deg,
+    #522473 0%,
+    rgba(80, 48, 153, 0.92) 100%
+  );
   position: absolute;
   top: 0;
   bottom: 0;
@@ -28,14 +31,16 @@
   border-bottom: 1px solid rgba(222, 222, 222, 0.35);
   height: 100px;
 }
+
 .PurpleConvert-header-block {
   flex: 1;
   text-align: center;
-}
-.PurpleConvert-header-block._logo img {
-  user-select: none;
-}
 
-.PurpleConvert-header-block._title h1 {
-  font-weight: 300;
+  &._logo img {
+    user-select: none;
+  }
+
+  &._title h1 {
+    font-weight: 300;
+  }
 }
