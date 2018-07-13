@@ -38,17 +38,30 @@ class Converter extends Component {
     return (
       <div className="Converter">
         <div className="Converter-wrap">
-          <input
-            type="number"
-            placeholder="Enter amount"
-            className="PurpleConvertInput Converter-valueInput"
-          />
+          <div className="Converter-inputBase _shadow">
+            <input
+              type="number"
+              placeholder="Enter amount"
+              className="PurpleConvertInput Converter-valueInput"
+            />
+
+            <Select
+              name="Converter-currencySelect"
+              className="Converter-currencySelect _purpleSelectBox"
+              value={value}
+              focusedOption="USD"
+              placeholder="Select base currency"
+              onChange={this.handleChange}
+              options={this.state.currenciesAvailable}
+            />
+          </div>
 
           <Select
-            name="Converter-currencySelect"
+            name="Converter-destinationCurrencySelect"
+            className="Converter-destinationCurrencySelect _shadow _purpleSelectBox"
             value={value}
             focusedOption="USD"
-            placeholder="Select currency"
+            placeholder="Select destination currency"
             onChange={this.handleChange}
             options={this.state.currenciesAvailable}
           />

@@ -1,21 +1,78 @@
 .Converter {
   .Converter-wrap {
-    max-width: 500px;
+    max-width: 600px;
     margin: 100px auto;
   }
 
-  .Converter-valueInput {
-    margin-bottom: 20px;
+  .Converter-inputBase {
+    display: flex;
+    background: #fff;
+    padding: 0;
+    margin-bottom: 30px;
+    border: 0;
+
+    .Converter-valueInput {
+      flex: 2;
+      outline: none;
+      padding: 0 20px;
+      border: 0;
+      font-size: 18px;
+      border-right: 1px solid #dedede;
+      transition: 0.3s background-color;
+      &:hover {
+        background: #f5f5f5;
+      }
+    }
+    .Converter-currencySelect {
+      flex: 4;
+      border: 0;
+      border-radius: 0;
+      .Select-control {
+        border: 0;
+        transition: 0.3s background-color;
+        &:hover {
+          background: #f5f5f5;
+        }
+      }
+    }
   }
 }
 
-.PurpleConvertInput {
-  box-sizing: border-box;
-  width: 100%;
+._shadow {
   border-radius: 3px;
-  padding: 14px 20px;
-  color: rgba(0, 0, 0, 0.9);
   box-shadow: 0 0 20px 0 rgba(51, 18, 77, 0.74);
-  outline: none;
   border: 1px solid rgba(51, 18, 77, 1);
+}
+
+._purpleSelectBox {
+  .Select-control {
+    height: 40px;
+    width: 100%;
+    color: rgba(0, 0, 0, 0.9);
+    outline: none;
+
+    .Select-placeholder {
+      line-height: 50px;
+      padding: 0 20px;
+    }
+
+    .Select-value {
+      line-height: 50px !important;
+      padding: 0 10px;
+
+      .Select-value-label {
+        line-height: 50px;
+        padding: 0 10px;
+      }
+    }
+
+    .Select-input {
+      height: 50px;
+
+      input {
+        line-height: 50px;
+        padding: 0 10px;
+      }
+    }
+  }
 }
