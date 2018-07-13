@@ -8,7 +8,6 @@
     display: flex;
     background: #fff;
     padding: 0;
-    margin-bottom: 30px;
     border: 0;
 
     .Converter-valueInput {
@@ -35,6 +34,10 @@
         }
       }
     }
+  }
+  
+  .Converter-destinationCurrencySelect{
+    margin-bottom: 50px;
   }
 }
 
@@ -74,5 +77,37 @@
         padding: 0 10px;
       }
     }
+  }
+}
+
+.Converter-divider {
+  display: block;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 40px 0;
+  & > span {
+    position: relative;
+    display: inline-block;
+  }
+
+  & > span:before,
+  & > span:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 9999px;
+    height: 1px;
+    background: #fff;
+  }
+
+  & > span:before {
+    right: 100%;
+    margin-right: 15px;
+  }
+
+  & > span:after {
+    left: 100%;
+    margin-left: 15px;
   }
 }

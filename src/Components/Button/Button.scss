@@ -1,0 +1,22 @@
+.PurpleButton {
+  border: 0;
+  box-shadow: none;
+  border-radius: 3px;
+  font-size: 18px;
+  width: 100%;
+  font-weight: 300;
+  padding: 24px 22px;
+  cursor: pointer;
+  transition: .2s linear background;
+  
+  .PurpleButton-icon {
+    margin-right: 5px;
+  }
+  &._primary {
+    background: rgba(21, 11, 29, .7);
+    color: #fff;
+    &:hover {
+      background: rgba(21, 11, 29, .9);
+    }
+  }
+}
