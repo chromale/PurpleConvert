@@ -14,15 +14,19 @@ import "./Converter.css";
 import Button from "../Button/Button";
 import Result from "../Result/Result";
 
+const initialState = {
+  baseCurrency: "",
+  destinationCurrency: "",
+  amount: 0,
+  result: null,
+  loading: false
+};
+
 class Converter extends Component {
   state = {
     currenciesAvailable: [],
     latest: [],
-    baseCurrency: "",
-    destinationCurrency: "",
-    amount: 0,
-    result: null,
-    loading: false
+    ...initialState
   };
 
   componentDidMount() {
@@ -57,6 +61,10 @@ class Converter extends Component {
       );
   };
 
+  resetConverter = () => {
+    this.setState(() => ({ ...initialState }));
+  };
+
   handleChange = baseCurrency => {
     this.setState(() => ({
       baseCurrency: baseCurrency
@@ -79,8 +87,15 @@ class Converter extends Component {
   convertValues = () => {
     const { amount, destinationCurrency, baseCurrency, latest } = this.state;
 
-    this.setState(() => ({
+    const result = {
+      from: baseCurrency,
+      amount,
+      to: destinationCurrency,
       result: convertExchange(latest, amount, destinationCurrency, baseCurrency)
+    };
+
+    this.setState(() => ({
+      result
     }));
   };
 
@@ -105,9 +120,9 @@ class Converter extends Component {
       <div className="Converter">
         <div className="Converter-wrap">
           <div className="Converter-inputBase _shadow">
-            {/* TODO: Dont allow minus values */}
             <input
               type="number"
+              min="0"
               pattern="[0-9]*"
               placeholder="Enter amount"
               value={amount}
@@ -142,19 +157,20 @@ class Converter extends Component {
             options={currenciesAvailable}
           />
 
+          {result && <Result result={result} />}
+
           <Button
-            text="Convert"
+            text={result ? "Convert again" : "Convert"}
             icon={<IonIcons.IoShuffle size={20} />}
             type="primary"
             onClick={this.convertValues}
           />
-
           {result && (
-            <Result
-              result={result}
-              baseCurrency={baseCurrency}
-              destCurrency={destinationCurrency}
-              amount={amount}
+            <Button
+              text="Reset"
+              icon={<IonIcons.IoIosArrowLeft size={20} />}
+              type="secondary"
+              onClick={this.resetConverter}
             />
           )}
         </div>

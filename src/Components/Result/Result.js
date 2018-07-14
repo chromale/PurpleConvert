@@ -1,22 +1,33 @@
 // @flow
-import React from "react";
+import React, { Component } from "react";
 import "./Result.css";
 
 type Props = {
-  result: number,
-  baseCurrency: string,
-  destCurrency: string,
-  amount: number
+  result: Object
 };
-const Result = (props: Props) => (
-  <div className="Result _shadow">
-    <div className="Result-info">
-      {props.amount} {props.baseCurrency.value} is approx.
-    </div>
-    <div className="Result-main">
-      {props.result.toFixed(4)} {props.destCurrency.value}
-    </div>
-  </div>
-);
+
+class Result<Props> extends Component {
+  state = {
+    ...this.props.result
+  };
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps.result);
+    this.setState(() => ({ ...nextProps.result }));
+  }
+
+  render() {
+    return (
+      <div className="Result _shadow">
+        <div className="Result-info">
+          {this.state.amount} {this.state.from.value} is approx.
+        </div>
+        <div className="Result-main">
+          {this.state.result.toFixed(2)} {this.state.to.value}
+        </div>
+      </div>
+    );
+  }
+}
 
 export default Result;
