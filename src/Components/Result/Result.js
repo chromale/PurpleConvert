@@ -1,29 +1,36 @@
 // @flow
-import React, { Component } from "react";
+import React from "react";
 import "./Result.css";
 
-type Props = {
-  result: Object
+type State = {
+  to: Object,
+  from: Object,
+  amount: number,
+  result: number
 };
 
-class Result<Props> extends Component {
+type Props = {
+  result: State
+};
+
+class Result extends React.Component<Props, State> {
   state = {
     ...this.props.result
   };
 
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps.result);
+  componentWillReceiveProps(nextProps: Props) {
     this.setState(() => ({ ...nextProps.result }));
   }
 
   render() {
+    const { amount, from, to, result } = this.state;
     return (
       <div className="Result _shadow">
         <div className="Result-info">
-          {this.state.amount} {this.state.from.value} is approx.
+          {amount} {from.value} is approx.
         </div>
         <div className="Result-main">
-          {this.state.result.toFixed(2)} {this.state.to.value}
+          {result.toFixed(2)} {to.value}
         </div>
       </div>
     );

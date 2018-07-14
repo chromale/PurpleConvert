@@ -4,8 +4,8 @@
     margin: 100px auto;
   }
 
-  .Converter-label{
-    padding: 5px 0;
+  .Converter-label {
+    padding-bottom: 10px;
     display: block;
     font-weight: 300;
   }
@@ -40,47 +40,20 @@
       }
     }
   }
-  
-  .Converter-destinationCurrencySelect{
+
+  .Converter-destinationCurrencySelect {
     margin-bottom: 50px;
   }
-}
 
-._shadow {
-  border-radius: 3px;
-  box-shadow: 0 0 20px 0 rgba(51, 18, 77, 0.74);
-  border: 1px solid rgba(51, 18, 77, 1);
-}
-
-._purpleSelectBox {
-  .Select-control {
-    height: 40px;
-    width: 100%;
-    color: rgba(0, 0, 0, 0.9);
-    outline: none;
-
-    .Select-placeholder {
-      line-height: 50px;
-      padding: 0 20px;
+  @media (max-width: 768px) {
+    .Converter-wrap {
+      max-width: 100%;
+      margin: 30px auto;
+      padding: 0 30px;
     }
 
-    .Select-value {
-      line-height: 50px !important;
-      padding: 0 10px;
-
-      .Select-value-label {
-        line-height: 50px;
-        padding: 0 10px;
-      }
-    }
-
-    .Select-input {
-      height: 50px;
-
-      input {
-        line-height: 50px;
-        padding: 0 10px;
-      }
+    .Converter-valueInput {
+      min-width: 0;
     }
   }
 }
@@ -90,7 +63,7 @@
   text-align: center;
   overflow: hidden;
   white-space: nowrap;
-  margin: 40px 0;
+  margin: 30px 0;
   & > span {
     position: relative;
     display: inline-block;

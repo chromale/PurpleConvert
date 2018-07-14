@@ -5,20 +5,34 @@
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid rgba(222, 222, 222, 0.35);
-}
+  box-sizing: border-box;
 
-.PurpleConvertHeader-block {
-  flex: 1;
-  text-align: center;
+  .PurpleConvertHeader-block {
+    flex: 1;
+    text-align: center;
 
-  &._logo {
-    img.App-logo {
+    &._logo .App-logo {
       height: 40px;
       user-select: none;
     }
+
+    &._title h1 {
+      font-weight: 300;
+    }
   }
 
-  &._title h1 {
-    font-weight: 300;
+  @media (max-width: 768px) {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    padding: 20px;
+
+    .PurpleConvertHeader-block._logo .App-logo {
+      height: 30px;
+    }
+
+    h1 {
+      font-size: 18px;
+    }
   }
 }
