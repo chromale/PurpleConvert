@@ -10,6 +10,7 @@ import * as IonIcons from "react-icons/lib/io";
 import "react-select/dist/react-select.css";
 import "./Converter.css";
 import Button from "../Button/Button";
+import Result from "../Result/Result";
 
 class Converter extends Component {
   state = {
@@ -17,7 +18,8 @@ class Converter extends Component {
     latest: [],
     baseCurrency: "",
     destinationCurrency: "",
-    amount: 0
+    amount: 0,
+    result: null
   };
 
   componentDidMount() {
@@ -71,13 +73,29 @@ class Converter extends Component {
   convertValues = () => {
     const { amount, destinationCurrency, baseCurrency, latest } = this.state;
 
-    convertExchange(latest, amount, destinationCurrency, baseCurrency);
+    const result = convertExchange(
+      latest,
+      amount,
+      destinationCurrency,
+      baseCurrency
+    );
+
+    this.setState(() => ({
+      result
+    }));
   };
 
   render() {
-    const value = this.state.baseCurrency && this.state.baseCurrency.value;
-    const destValue =
-      this.state.destinationCurrency && this.state.destinationCurrency.value;
+    const {
+      amount,
+      baseCurrency,
+      destinationCurrency,
+      result,
+      currenciesAvailable
+    } = this.state;
+
+    const value = baseCurrency && baseCurrency.value;
+    const destValue = destinationCurrency && destinationCurrency.value;
 
     return (
       <div className="Converter">
@@ -88,7 +106,7 @@ class Converter extends Component {
               type="number"
               pattern="[0-9]*"
               placeholder="Enter amount"
-              value={this.state.amount}
+              value={amount}
               onChange={this.handleChangeAmount}
               className="PurpleConvertInput Converter-valueInput"
             />
@@ -100,7 +118,7 @@ class Converter extends Component {
               focusedOption="USD"
               placeholder="Select base currency"
               onChange={this.handleChange}
-              options={this.state.currenciesAvailable}
+              options={currenciesAvailable}
             />
           </div>
 
@@ -117,7 +135,7 @@ class Converter extends Component {
             value={destValue}
             placeholder="Select destination currency"
             onChange={this.handleChangeDestCurrency}
-            options={this.state.currenciesAvailable}
+            options={currenciesAvailable}
           />
 
           <Button
@@ -126,6 +144,15 @@ class Converter extends Component {
             type="primary"
             onClick={this.convertValues}
           />
+
+          {result && (
+            <Result
+              result={result}
+              baseCurrency={baseCurrency}
+              dest={destinationCurrency}
+              amount={amount}
+            />
+          )}
         </div>
       </div>
     );

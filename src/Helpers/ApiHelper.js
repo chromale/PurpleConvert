@@ -21,8 +21,12 @@ export const convertApiValues = object => {
   }));
 };
 
-const getCurrencyValue = (latest, currency) => {
-  return latest[currency];
+const getCurrencyValueInUsd = (latest, currency, amount) => {
+  return (amount / latest[currency]).toFixed(20);
+};
+
+const convertValue = (latest, base, target) => {
+  return base * latest[target];
 };
 
 export const convertExchange = (
@@ -31,5 +35,6 @@ export const convertExchange = (
   destinationCurrency,
   baseCurrency
 ) => {
-  console.log(getCurrencyValue(latest, destinationCurrency.value));
+  const baseInUsd = getCurrencyValueInUsd(latest, baseCurrency.value, amount);
+  return convertValue(latest, baseInUsd, destinationCurrency.value);
 };
