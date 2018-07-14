@@ -149,7 +149,7 @@ class Converter extends Component {
             <Result
               result={result}
               baseCurrency={baseCurrency}
-              dest={destinationCurrency}
+              destCurrency={destinationCurrency}
               amount={amount}
             />
           )}
