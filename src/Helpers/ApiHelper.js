@@ -38,3 +38,21 @@ export const convertExchange = (
   const baseInUsd = getCurrencyValueInUsd(latest, baseCurrency.value, amount);
   return convertValue(latest, baseInUsd, destinationCurrency.value);
 };
+
+export const setDataToSessionStorage = (currencies, latest) => {
+  sessionStorage.setItem(
+    "Currencies",
+    JSON.stringify({
+      data: convertApiValues(currencies.data)
+    })
+  );
+  sessionStorage.setItem(
+    "Rates",
+    JSON.stringify({
+      data: latest.data.rates
+    })
+  );
+  sessionStorage.setItem("Timestamp", {
+    timestamp: Date.now()
+  });
+};

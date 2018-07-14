@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import axios from "axios";
 import {
   callApi,
   convertApiValues,
-  convertExchange
+  convertExchange,
+  setDataToSessionStorage
 } from "../../Helpers/ApiHelper";
 import Select from "react-select";
 import * as IonIcons from "react-icons/lib/io";
@@ -19,71 +21,40 @@ class Converter extends Component {
     baseCurrency: "",
     destinationCurrency: "",
     amount: 0,
-    result: null
+    result: null,
+    loading: false
   };
 
   componentDidMount() {
-    if (!sessionStorage["purpleConvertCurrencies"]) {
-      this.fetchCurrencies();
-    } else {
-      const currencies = JSON.parse(
-        sessionStorage.getItem("purpleConvertCurrencies")
-      );
-      this.setState(() => ({
-        currenciesAvailable: currencies.data
-      }));
+    if (!sessionStorage["Currencies"] || !sessionStorage["Rates"]) {
+      return this.fetchData();
     }
-
-    if (!sessionStorage["purpleConvertLatestValues"]) {
-      this.fetchLatest();
-    } else {
-      const currencies = JSON.parse(
-        sessionStorage.getItem("purpleConvertLatestValues")
-      );
-      this.setState(() => ({
-        latest: currencies.data
-      }));
-    }
+    this.loadData();
   }
 
-  fetchCurrencies = () => {
-    callApi("get", "currencies.json")
-      .then(res => {
-        this.setState(() => ({
-          currenciesAvailable: convertApiValues(res.data)
-        }));
-
-        sessionStorage.setItem(
-          "purpleConvertCurrencies",
-          JSON.stringify({
-            data: convertApiValues(res.data),
-            timestamp: Date.now()
-          })
-        );
-      })
-      .catch(err => {
-        console.log("parsing failed", err);
-      });
+  loadData = () => {
+    const currencies = JSON.parse(sessionStorage.getItem("Currencies"));
+    const rates = JSON.parse(sessionStorage.getItem("Rates"));
+    this.setState(() => ({
+      latest: rates.data,
+      currenciesAvailable: currencies.data
+    }));
   };
 
-  fetchLatest = () => {
-    callApi("get", "latest.json")
-      .then(res => {
-        this.setState(() => ({
-          latest: res.data.rates
-        }));
-
-        sessionStorage.setItem(
-          "purpleConvertLatestValues",
-          JSON.stringify({
-            data: res.data.rates,
-            timestamp: Date.now()
-          })
-        );
-      })
-      .catch(err => {
-        console.log("parsing failed", err);
-      });
+  fetchData = () => {
+    this.setState(() => ({ loading: true }));
+    axios
+      .all([callApi("get", "currencies.json"), callApi("get", "latest.json")])
+      .then(
+        axios.spread((currencies, latest) => {
+          setDataToSessionStorage(currencies, latest);
+          this.setState(() => ({
+            currenciesAvailable: convertApiValues(currencies.data),
+            latest: latest.data.rates,
+            loading: false
+          }));
+        })
+      );
   };
 
   handleChange = baseCurrency => {
@@ -92,7 +63,7 @@ class Converter extends Component {
     }));
   };
 
-  handleChangeDestCurrency = destCurrency => {
+  handleChangeDestinationCurrency = destCurrency => {
     this.setState(() => ({
       destinationCurrency: destCurrency
     }));
@@ -108,15 +79,8 @@ class Converter extends Component {
   convertValues = () => {
     const { amount, destinationCurrency, baseCurrency, latest } = this.state;
 
-    const result = convertExchange(
-      latest,
-      amount,
-      destinationCurrency,
-      baseCurrency
-    );
-
     this.setState(() => ({
-      result
+      result: convertExchange(latest, amount, destinationCurrency, baseCurrency)
     }));
   };
 
@@ -126,11 +90,16 @@ class Converter extends Component {
       baseCurrency,
       destinationCurrency,
       result,
-      currenciesAvailable
+      currenciesAvailable,
+      loading
     } = this.state;
 
     const value = baseCurrency && baseCurrency.value;
     const destValue = destinationCurrency && destinationCurrency.value;
+
+    if (loading) {
+      return <div>Loading</div>;
+    }
 
     return (
       <div className="Converter">
@@ -169,7 +138,7 @@ class Converter extends Component {
             className="Converter-destinationCurrencySelect _shadow _purpleSelectBox"
             value={destValue}
             placeholder="Select destination currency"
-            onChange={this.handleChangeDestCurrency}
+            onChange={this.handleChangeDestinationCurrency}
             options={currenciesAvailable}
           />
 
