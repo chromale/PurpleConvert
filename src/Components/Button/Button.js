@@ -6,11 +6,16 @@ type Props = {
   text: string,
   icon: any,
   type: string,
-  onClick?: Function
+  onClick: Function,
+  disabled: boolean
 };
 
 const Button = (props: Props) => (
-  <button className={`PurpleButton _${props.type}`} onClick={props.onClick}>
+  <button
+    className={`PurpleButton _${props.type}`}
+    onClick={props.onClick}
+    disabled={props.disabled}
+  >
     {props.icon && <span className="PurpleButton-icon">{props.icon}</span>}
     {props.text}
   </button>

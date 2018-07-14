@@ -119,6 +119,9 @@ class Converter extends Component {
     return (
       <div className="Converter">
         <div className="Converter-wrap">
+          <label className="Converter-label">
+            1. How much and which currency do you want to convert?
+          </label>
           <div className="Converter-inputBase _shadow">
             <input
               type="number"
@@ -134,7 +137,6 @@ class Converter extends Component {
               name="Converter-currencySelect"
               className="Converter-currencySelect _purpleSelectBox"
               value={value}
-              focusedOption="USD"
               placeholder="Select base currency"
               onChange={this.handleChange}
               options={currenciesAvailable}
@@ -147,12 +149,12 @@ class Converter extends Component {
             </span>
           </div>
 
-          {/* TODO: Select minus selected currency */}
+          <label className="Converter-label">2. Select target currency</label>
           <Select
             name="Converter-destinationCurrencySelect"
             className="Converter-destinationCurrencySelect _shadow _purpleSelectBox"
             value={destValue}
-            placeholder="Select destination currency"
+            placeholder="Select target currency"
             onChange={this.handleChangeDestinationCurrency}
             options={currenciesAvailable}
           />
@@ -164,6 +166,7 @@ class Converter extends Component {
             icon={<IonIcons.IoShuffle size={20} />}
             type="primary"
             onClick={this.convertValues}
+            disabled={!destValue || !baseCurrency || !baseCurrency}
           />
           {result && (
             <Button
