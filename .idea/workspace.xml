@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6f32ba5e-818b-4814-9741-b811ad53927e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Button/Button.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Button/Button.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Converter/Converter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Converter/Converter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Result/Result.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Result/Result.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,11 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Converter.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Converter.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Components/Converter/Converter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="68" column="26" lean-forward="true" selection-start-line="68" selection-start-column="26" selection-end-line="68" selection-end-column="26" />
+            <state relative-caret-position="388">
+              <caret line="167" column="40" lean-forward="true" selection-start-line="167" selection-start-column="40" selection-end-line="167" selection-end-column="40" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -37,20 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ios-arrow-left.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/react-icons/io/ios-arrow-left.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="4" column="20" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Button.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Components/Button/Button.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="12" column="34" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="34" />
+            <state relative-caret-position="138">
+              <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
               <folding>
                 <element signature="e#9#35#0" expanded="true" />
               </folding>
@@ -76,11 +65,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Result.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Result.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Components/Result/Result.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="368">
+              <caret line="16" column="3" lean-forward="true" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -109,8 +98,8 @@
       <file leaf-file-name="Converter.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Components/Converter/Converter.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="53" column="3" lean-forward="true" selection-start-line="53" selection-start-column="3" selection-end-line="53" selection-end-column="30" />
+            <state relative-caret-position="207">
+              <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -144,11 +133,12 @@
       <find>text</find>
       <find>handleChange</find>
       <find>&amp;</find>
-      <find>color:</find>
       <find>handleChangeDestinationCurrency</find>
       <find>arrow</find>
       <find>back</find>
       <find>IosArrowBack</find>
+      <find>color:</find>
+      <find>amount</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -168,13 +158,13 @@
         <option value="$PROJECT_DIR$/src/Components/Header/Header.scss" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/Components/App/App.js" />
-        <option value="$PROJECT_DIR$/src/Components/Button/Button.js" />
-        <option value="$PROJECT_DIR$/src/Components/Converter/Converter.scss" />
         <option value="$PROJECT_DIR$/src/Components/Result/Result.scss" />
         <option value="$PROJECT_DIR$/src/Helpers/ApiHelper.js" />
         <option value="$PROJECT_DIR$/src/Components/Button/Button.scss" />
-        <option value="$PROJECT_DIR$/src/Components/Converter/Converter.js" />
         <option value="$PROJECT_DIR$/src/Components/Result/Result.js" />
+        <option value="$PROJECT_DIR$/src/Components/Button/Button.js" />
+        <option value="$PROJECT_DIR$/src/Components/Converter/Converter.scss" />
+        <option value="$PROJECT_DIR$/src/Components/Converter/Converter.js" />
       </list>
     </option>
   </component>
@@ -358,7 +348,9 @@
     <MESSAGE value="Result component styling and adding information." />
     <MESSAGE value="Use SessionStorage instead of API if possible." />
     <MESSAGE value="Refactoring." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring." />
+    <MESSAGE value="Keep results in Result component. Reset button." />
+    <MESSAGE value="Add labels" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add labels" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Components/Converter/Converter.js">
@@ -654,13 +646,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Converter/Converter.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="53" column="3" lean-forward="true" selection-start-line="53" selection-start-column="3" selection-end-line="53" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/Result/Result.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -692,29 +677,12 @@
     <entry file="file://$PROJECT_DIR$/node_modules/react-icons/io/android-image.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/react-icons/io/ios-arrow-left.js">
+    <entry file="file://$PROJECT_DIR$/src/Components/Result/Result.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="4" column="20" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Button/Button.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="12" column="34" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="34" />
+        <state relative-caret-position="368">
+          <caret line="16" column="3" lean-forward="true" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
           <folding>
-            <element signature="e#9#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Converter/Converter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="68" column="26" lean-forward="true" selection-start-line="68" selection-start-column="26" selection-end-line="68" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -726,12 +694,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Result/Result.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/react-icons/io/ios-arrow-left.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="69">
+          <caret line="4" column="20" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Button/Button.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#9#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Converter/Converter.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Converter/Converter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="167" column="40" lean-forward="true" selection-start-line="167" selection-start-column="40" selection-end-line="167" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -166,7 +166,9 @@ class Converter extends Component {
             icon={<IonIcons.IoShuffle size={20} />}
             type="primary"
             onClick={this.convertValues}
-            disabled={!destValue || !baseCurrency || !baseCurrency}
+            disabled={
+              !destValue || !baseCurrency || !baseCurrency || amount < 0.1
+            }
           />
           {result && (
             <Button
