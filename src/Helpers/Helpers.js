@@ -21,11 +21,11 @@ export const convertApiValues = object => {
   }));
 };
 
-const getCurrencyValueInUsd = (latest, currency, amount) => {
-  return (amount / latest[currency]).toFixed(20);
+export const getCurrencyValueInUsd = (latest, currency, amount) => {
+  return amount / latest[currency];
 };
 
-const convertValue = (latest, base, target) => {
+export const convertValue = (latest, base, target) => {
   return base * latest[target];
 };
 
