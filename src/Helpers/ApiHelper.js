@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export const callApi = (method, url, payload) => {
-  const server = "https://openexchangerates.org/api/";
-  const apiKey = "65964a5ce1734f43b72497c695f51979";
+const server = "https://openexchangerates.org/api/";
+const apiKey = "65964a5ce1734f43b72497c695f51979";
 
+export const callApi = (method, url, payload) => {
   switch (method) {
     case "get":
       return axios.get(`${server}${url}?app_id=${apiKey}`);
@@ -19,4 +19,17 @@ export const convertApiValues = object => {
     label: `${value} - ${label}`,
     value
   }));
+};
+
+const getCurrencyValue = (latest, currency) => {
+  return latest[currency];
+};
+
+export const convertExchange = (
+  latest,
+  amount,
+  destinationCurrency,
+  baseCurrency
+) => {
+  console.log(getCurrencyValue(latest, destinationCurrency.value));
 };

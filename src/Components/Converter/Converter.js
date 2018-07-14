@@ -1,5 +1,9 @@
 import React, { Component } from "react";
-import { callApi, convertApiValues } from "../../Helpers/ApiHelper";
+import {
+  callApi,
+  convertApiValues,
+  convertExchange
+} from "../../Helpers/ApiHelper";
 import Select from "react-select";
 import * as IonIcons from "react-icons/lib/io";
 
@@ -10,11 +14,15 @@ import Button from "../Button/Button";
 class Converter extends Component {
   state = {
     currenciesAvailable: [],
-    selectedOption: ""
+    latest: [],
+    baseCurrency: "",
+    destinationCurrency: "",
+    amount: 0
   };
 
   componentDidMount() {
     this.fetchCurrencies();
+    this.fetchLatest();
   }
 
   fetchCurrencies = () => {
@@ -29,26 +37,59 @@ class Converter extends Component {
       });
   };
 
-  handleChange = selectedOption => {
+  fetchLatest = () => {
+    callApi("get", "latest.json")
+      .then(res => {
+        this.setState(() => ({
+          latest: res.data.rates
+        }));
+      })
+      .catch(err => {
+        console.log("parsing failed", err);
+      });
+  };
+
+  handleChange = baseCurrency => {
     this.setState(() => ({
-      selectedOption: selectedOption
+      baseCurrency: baseCurrency
+    }));
+  };
+
+  handleChangeDestCurrency = destCurrency => {
+    this.setState(() => ({
+      destinationCurrency: destCurrency
+    }));
+  };
+
+  handleChangeAmount = e => {
+    const val = e.target.value;
+    this.setState(() => ({
+      amount: val
     }));
   };
 
   convertValues = () => {
-    console.log("yolo");
+    const { amount, destinationCurrency, baseCurrency, latest } = this.state;
+
+    convertExchange(latest, amount, destinationCurrency, baseCurrency);
   };
 
   render() {
-    const value = this.state.selectedOption && this.state.selectedOption.value;
+    const value = this.state.baseCurrency && this.state.baseCurrency.value;
+    const destValue =
+      this.state.destinationCurrency && this.state.destinationCurrency.value;
 
     return (
       <div className="Converter">
         <div className="Converter-wrap">
           <div className="Converter-inputBase _shadow">
+            {/* TODO: Dont allow minus values */}
             <input
               type="number"
+              pattern="[0-9]*"
               placeholder="Enter amount"
+              value={this.state.amount}
+              onChange={this.handleChangeAmount}
               className="PurpleConvertInput Converter-valueInput"
             />
 
@@ -69,13 +110,13 @@ class Converter extends Component {
             </span>
           </div>
 
+          {/* TODO: Select minus selected currency */}
           <Select
             name="Converter-destinationCurrencySelect"
             className="Converter-destinationCurrencySelect _shadow _purpleSelectBox"
-            value={value}
-            focusedOption="USD"
+            value={destValue}
             placeholder="Select destination currency"
-            onChange={this.handleChange}
+            onChange={this.handleChangeDestCurrency}
             options={this.state.currenciesAvailable}
           />
 
