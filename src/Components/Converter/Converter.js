@@ -23,8 +23,27 @@ class Converter extends Component {
   };
 
   componentDidMount() {
-    this.fetchCurrencies();
-    this.fetchLatest();
+    if (!sessionStorage["purpleConvertCurrencies"]) {
+      this.fetchCurrencies();
+    } else {
+      const currencies = JSON.parse(
+        sessionStorage.getItem("purpleConvertCurrencies")
+      );
+      this.setState(() => ({
+        currenciesAvailable: currencies.data
+      }));
+    }
+
+    if (!sessionStorage["purpleConvertLatestValues"]) {
+      this.fetchLatest();
+    } else {
+      const currencies = JSON.parse(
+        sessionStorage.getItem("purpleConvertLatestValues")
+      );
+      this.setState(() => ({
+        latest: currencies.data
+      }));
+    }
   }
 
   fetchCurrencies = () => {
@@ -33,6 +52,14 @@ class Converter extends Component {
         this.setState(() => ({
           currenciesAvailable: convertApiValues(res.data)
         }));
+
+        sessionStorage.setItem(
+          "purpleConvertCurrencies",
+          JSON.stringify({
+            data: convertApiValues(res.data),
+            timestamp: Date.now()
+          })
+        );
       })
       .catch(err => {
         console.log("parsing failed", err);
@@ -45,6 +72,14 @@ class Converter extends Component {
         this.setState(() => ({
           latest: res.data.rates
         }));
+
+        sessionStorage.setItem(
+          "purpleConvertLatestValues",
+          JSON.stringify({
+            data: res.data.rates,
+            timestamp: Date.now()
+          })
+        );
       })
       .catch(err => {
         console.log("parsing failed", err);
