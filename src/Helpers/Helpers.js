@@ -21,38 +21,29 @@ export const convertApiValues = object => {
   }));
 };
 
-export const getCurrencyValueInUsd = (latest, currency, amount) => {
-  return amount / latest[currency];
+export const getCurrencyValueInUsd = (rates, targetCurrency, amount) => {
+  return amount / rates[targetCurrency];
 };
 
-export const convertValue = (latest, base, target) => {
-  return base * latest[target];
+export const convertValue = (rates, baseCurrency, targetCurrency) => {
+  return baseCurrency * rates[targetCurrency];
 };
 
 export const convertExchange = (
-  latest,
+  rates,
   amount,
-  destinationCurrency,
+  targetCurrency,
   baseCurrency
 ) => {
-  const baseInUsd = getCurrencyValueInUsd(latest, baseCurrency.value, amount);
-  return convertValue(latest, baseInUsd, destinationCurrency.value);
+  const baseInUsd = getCurrencyValueInUsd(rates, baseCurrency, amount);
+  return convertValue(rates, baseInUsd, targetCurrency);
 };
 
 export const setDataToSessionStorage = (currencies, latest) => {
   sessionStorage.setItem(
     "Currencies",
-    JSON.stringify({
-      data: convertApiValues(currencies.data)
-    })
+    JSON.stringify(convertApiValues(currencies.data))
   );
-  sessionStorage.setItem(
-    "Rates",
-    JSON.stringify({
-      data: latest.data.rates
-    })
-  );
-  sessionStorage.setItem("Timestamp", {
-    timestamp: Date.now()
-  });
+  sessionStorage.setItem("Rates", JSON.stringify(latest.data.rates));
+  sessionStorage.setItem("Timestamp", Date.now());
 };

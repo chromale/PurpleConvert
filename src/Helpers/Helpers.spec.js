@@ -25,18 +25,12 @@ describe("#Helpers", () => {
   });
 
   it("Convert function (USD) -> (NON-USD)", () => {
-    expect(
-      convertExchange(mockCurrency, 10, { value: "CZK" }, { value: "USD" })
-    ).toBe(200);
+    expect(convertExchange(mockCurrency, 10, "CZK", "USD")).toBe(200);
 
-    expect(
-      convertExchange(mockCurrency, 200, { value: "USD" }, { value: "CZK" })
-    ).toBe(10);
+    expect(convertExchange(mockCurrency, 200, "USD", "CZK")).toBe(10);
   });
 
   it("Convert function (NON USD) -> (NON USD)", () => {
-    expect(
-      convertExchange(mockCurrency, 10, { value: "EUR" }, { value: "CZK" })
-    ).toBe(0.4);
+    expect(convertExchange(mockCurrency, 10, "EUR", "CZK")).toBe(0.4);
   });
 });

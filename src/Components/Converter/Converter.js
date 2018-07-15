@@ -40,8 +40,8 @@ class Converter extends Component {
     const currencies = JSON.parse(sessionStorage.getItem("Currencies"));
     const rates = JSON.parse(sessionStorage.getItem("Rates"));
     this.setState(() => ({
-      latest: rates.data,
-      currenciesAvailable: currencies.data
+      latest: rates,
+      currenciesAvailable: currencies
     }));
   };
 
@@ -91,7 +91,12 @@ class Converter extends Component {
       from: baseCurrency,
       amount,
       to: destinationCurrency,
-      result: convertExchange(latest, amount, destinationCurrency, baseCurrency)
+      result: convertExchange(
+        latest,
+        amount,
+        destinationCurrency.value,
+        baseCurrency.value
+      )
     };
 
     this.setState(() => ({
