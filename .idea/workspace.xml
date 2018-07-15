@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f32ba5e-818b-4814-9741-b811ad53927e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Result/Result.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Result/Result.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/App/App.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,23 +22,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Result.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Components/Result/Result.js">
+      <file leaf-file-name="Converter.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/Converter/Converter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+            <state relative-caret-position="1536">
+              <caret line="89" column="20" lean-forward="true" selection-start-line="89" selection-start-column="20" selection-end-line="89" selection-end-column="20" />
               <folding>
-                <element signature="e#9#35#0" expanded="true" />
+                <element signature="e#0#41#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Converter.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Components/Converter/Converter.js">
+      <file leaf-file-name="App.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Components/App/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="93" column="79" selection-start-line="93" selection-start-column="67" selection-end-line="93" selection-end-column="79" />
+            <state relative-caret-position="276">
+              <caret line="12" column="19" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -80,7 +79,7 @@
       <find>convertValue</find>
       <find>CZK</find>
       <find>EUR</find>
-      <find>result:</find>
+      <find />
       <find>USD</find>
     </findStrings>
   </component>
@@ -98,7 +97,6 @@
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/Components/Header/Header.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
-        <option value="$PROJECT_DIR$/src/Components/App/App.js" />
         <option value="$PROJECT_DIR$/src/Components/Result/Result.scss" />
         <option value="$PROJECT_DIR$/src/Helpers/ApiHelper.js" />
         <option value="$PROJECT_DIR$/src/Components/Button/Button.js" />
@@ -110,6 +108,7 @@
         <option value="$PROJECT_DIR$/src/Helpers/Helpers.js" />
         <option value="$PROJECT_DIR$/src/Helpers/Helpers.spec.js" />
         <option value="$PROJECT_DIR$/src/Components/Result/Result.js" />
+        <option value="$PROJECT_DIR$/src/Components/App/App.js" />
       </list>
     </option>
   </component>
@@ -168,6 +167,13 @@
               <item name="purpleconvert" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Components" type="462c0819:PsiDirectoryNode" />
+              <item name="App" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="purpleconvert" type="b2602c69:ProjectViewProjectNode" />
+              <item name="purpleconvert" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Components" type="462c0819:PsiDirectoryNode" />
               <item name="Converter" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -216,18 +222,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Jest.#Helpers">
-    <configuration name="#Convert function" type="JavaScriptTestRunnerJest" factoryName="Jest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="SUITE" />
-      <test-file value="$PROJECT_DIR$/src/Helpers/Helpers.spec.js" />
-      <test-names>
-        <test-name value="#Convert function" />
-      </test-names>
-    </configuration>
+  <component name="RunManager" selected="Jest.renders without crashing">
     <configuration name="#Helpers" type="JavaScriptTestRunnerJest" factoryName="Jest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -275,20 +270,31 @@
         <test-name value="Convert values in USD to target currency" />
       </test-names>
     </configuration>
+    <configuration name="renders without crashing" type="JavaScriptTestRunnerJest" factoryName="Jest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/Components/App/App.test.js" />
+      <test-names>
+        <test-name value="renders without crashing" />
+      </test-names>
+    </configuration>
     <list>
       <item itemvalue="Jest.#Helpers" />
-      <item itemvalue="Jest.#Convert function" />
       <item itemvalue="Jest.#Helpers.Convert function" />
       <item itemvalue="Jest.#Helpers.Convert function NON USD - NON USD" />
       <item itemvalue="Jest.#Helpers.Convert values in USD to target currency" />
+      <item itemvalue="Jest.renders without crashing" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.renders without crashing" />
         <item itemvalue="Jest.#Helpers" />
         <item itemvalue="Jest.#Helpers.Convert function NON USD - NON USD" />
         <item itemvalue="Jest.#Helpers.Convert values in USD to target currency" />
         <item itemvalue="Jest.#Helpers.Convert function" />
-        <item itemvalue="Jest.#Convert function" />
       </list>
     </recent_temporary>
   </component>
@@ -375,7 +381,8 @@
     <MESSAGE value="Validation for low amount of money" />
     <MESSAGE value="Add flow to Result Component. Little refactor." />
     <MESSAGE value="Add tests. Yay." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add tests. Yay." />
+    <MESSAGE value="Refactor result" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor result" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Components/Converter/Converter.js">
@@ -620,16 +627,6 @@
     <entry file="file://$PROJECT_DIR$/.flowconfig">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/App/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/Result/Result.css">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -730,22 +727,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Result/Result.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="19" lean-forward="true" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+          <folding>
+            <element signature="e#9#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/Converter/Converter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="93" column="79" selection-start-line="93" selection-start-column="67" selection-end-line="93" selection-end-column="79" />
+        <state relative-caret-position="1536">
+          <caret line="89" column="20" lean-forward="true" selection-start-line="89" selection-start-column="20" selection-end-line="89" selection-end-column="20" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Result/Result.js">
+    <entry file="file://$PROJECT_DIR$/src/Components/App/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+        <state relative-caret-position="276">
+          <caret line="12" column="19" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
           <folding>
-            <element signature="e#9#35#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
