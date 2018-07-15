@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+// @flow
+import React from "react";
 import axios from "axios";
 import {
   callApi,
@@ -15,17 +16,38 @@ import Button from "../Button/Button";
 import Result from "../Result/Result";
 
 const initialState = {
-  baseCurrency: "",
-  destinationCurrency: "",
+  baseCurrency: { label: "", value: "" },
+  targetCurrency: { label: "", value: "" },
   amount: 0,
   result: null,
   loading: false
 };
 
-class Converter extends Component {
+type Currency = { label: string, value: string };
+
+export type ResultType = {
+  to: Currency,
+  from: Currency,
+  amount: number,
+  result: number
+};
+
+type Props = {};
+
+type State = {
+  baseCurrency: Currency,
+  targetCurrency: Currency,
+  amount: number,
+  result: ?ResultType,
+  loading: boolean,
+  currenciesAvailable: Array<Object>,
+  rates: Array<Object>
+};
+
+class Converter extends React.Component<Props, State> {
   state = {
     currenciesAvailable: [],
-    latest: [],
+    rates: [],
     ...initialState
   };
 
@@ -37,12 +59,13 @@ class Converter extends Component {
   }
 
   loadData = () => {
-    const currencies = JSON.parse(sessionStorage.getItem("Currencies"));
+    const currenciesAvailable = JSON.parse(
+      //$FlowFixMe
+      sessionStorage.getItem("Currencies")
+    );
+    //$FlowFixMe
     const rates = JSON.parse(sessionStorage.getItem("Rates"));
-    this.setState(() => ({
-      latest: rates,
-      currenciesAvailable: currencies
-    }));
+    this.setState({ rates, currenciesAvailable });
   };
 
   fetchData = () => {
@@ -50,11 +73,11 @@ class Converter extends Component {
     axios
       .all([callApi("get", "currencies.json"), callApi("get", "latest.json")])
       .then(
-        axios.spread((currencies, latest) => {
-          setDataToSessionStorage(currencies, latest);
+        axios.spread((currencies, rates) => {
+          setDataToSessionStorage(currencies, rates);
           this.setState(() => ({
             currenciesAvailable: convertApiValues(currencies.data),
-            latest: latest.data.rates,
+            rates: rates.data.rates,
             loading: false
           }));
         })
@@ -62,60 +85,52 @@ class Converter extends Component {
   };
 
   resetConverter = () => {
-    this.setState(() => ({ ...initialState }));
+    this.setState({ ...initialState });
   };
 
-  handleChange = baseCurrency => {
-    this.setState(() => ({
-      baseCurrency: baseCurrency
-    }));
+  handleChange = (baseCurrency: Currency) => {
+    this.setState({ baseCurrency });
   };
 
-  handleChangeDestinationCurrency = destCurrency => {
-    this.setState(() => ({
-      destinationCurrency: destCurrency
-    }));
+  handleChangeDestinationCurrency = (targetCurrency: Currency) => {
+    this.setState({ targetCurrency });
   };
 
-  handleChangeAmount = e => {
+  handleChangeAmount = (e: any) => {
     const val = e.target.value;
-    this.setState(() => ({
-      amount: val
-    }));
+    this.setState({ amount: val });
   };
 
   convertValues = () => {
-    const { amount, destinationCurrency, baseCurrency, latest } = this.state;
+    const { amount, targetCurrency, baseCurrency, rates } = this.state;
 
     const result = {
       from: baseCurrency,
       amount,
-      to: destinationCurrency,
+      to: targetCurrency,
       result: convertExchange(
-        latest,
+        rates,
         amount,
-        destinationCurrency.value,
+        targetCurrency.value,
         baseCurrency.value
       )
     };
 
-    this.setState(() => ({
-      result
-    }));
+    this.setState({ result });
   };
 
   render() {
     const {
       amount,
       baseCurrency,
-      destinationCurrency,
+      targetCurrency,
       result,
       currenciesAvailable,
       loading
     } = this.state;
 
     const value = baseCurrency && baseCurrency.value;
-    const destValue = destinationCurrency && destinationCurrency.value;
+    const targetCurrencyValue = targetCurrency && targetCurrency.value;
 
     if (loading) {
       return <div>Loading</div>;
@@ -158,7 +173,7 @@ class Converter extends Component {
           <Select
             name="Converter-destinationCurrencySelect"
             className="Converter-destinationCurrencySelect _shadow _purpleSelectBox"
-            value={destValue}
+            value={targetCurrencyValue}
             placeholder="Select target currency"
             onChange={this.handleChangeDestinationCurrency}
             options={currenciesAvailable}
@@ -172,7 +187,10 @@ class Converter extends Component {
             type="primary"
             onClick={this.convertValues}
             disabled={
-              !destValue || !baseCurrency || !baseCurrency || amount < 0.1
+              !targetCurrencyValue ||
+              !baseCurrency ||
+              !baseCurrency ||
+              amount < 0.1
             }
           />
           {result && (

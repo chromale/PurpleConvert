@@ -1,13 +1,13 @@
 // @flow
-import React from "react";
+import * as React from "react";
 import "./Button.css";
 
 type Props = {
   text: string,
-  icon: any,
+  icon: React.Element<any>,
   type: string,
   onClick: Function,
-  disabled: boolean
+  disabled?: boolean
 };
 
 const Button = (props: Props) => (

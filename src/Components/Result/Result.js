@@ -1,16 +1,11 @@
 // @flow
 import React from "react";
 import "./Result.css";
+import type { ResultType } from "../Converter/Converter";
 
 type Props = {
-  result: {
-    to: Object,
-    from: Object,
-    amount: number,
-    result: number
-  }
-};
-
+    result: ResultType
+}
 const Result = (props: Props) => (
   <div className="Result _shadow">
     <div className="Result-info">
